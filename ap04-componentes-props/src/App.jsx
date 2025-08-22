@@ -2,6 +2,32 @@ import Pedido from "./Pedido"
 import Cartao from "./Cartao"
 import Feedback from "./Feedback"
 const App = () => {
+  const pedidos = [
+    {
+      data: '21/08/2025',
+      titulo: 'SSD',
+      icone: 'fa-hdd',
+      descricao: 'SSD Kingston'
+    },
+    {
+      data: '22/08/2025',
+      titulo: 'Concrete Maths',
+      icone: 'fa-book',
+      descricao: 'Livro do Donald Knuth'
+    },
+    {
+      data: '21/08/2025',
+      titulo: 'Heaphone',
+      icone: 'fa-headphones',
+      descricao: 'Headphone Bluetooth'
+    },
+    {
+      data: '30/07/2025',
+      titulo: 'Câmera',
+      icone: 'fa-camera',
+      descricao: 'Câmera GoPro'
+    }
+  ]
   const componenteFeedback = (
     <Feedback
       textoOK="Já chegou"
@@ -11,6 +37,7 @@ const App = () => {
     />
   )
   return <div>
+    {/* criar uma lista de hipopotamos e produzir cada jsx com a função map */}
     <div>
       <i class="fa-solid fa-hippo fa-3x"></i>
       <i class="fa-solid fa-hippo fa-flip-horizontal fa-2x"></i>
@@ -19,48 +46,21 @@ const App = () => {
     </div>
     <div className="container border rounded my-2 p-3">
       <div className="row">
-        <div className="col-sm-12 col-lg-6 col-xxl-4">
-
-          <Cartao cabecalho="22/08/2025">
-            <Pedido
-              icone="fa-hdd"
-              titulo="SSD"
-              descricao="SSD Kingston" />
-            <div className="mt-3"></div>
-            {componenteFeedback}
-          </Cartao>
-        </div>
-        <div className="col-sm-12 col-lg-6 col-xxl-4">
-          <Cartao cabecalho="21/07/2025">
-            <Pedido
-              icone="fa-book"
-              titulo="Pequeno principe"
-              descricao="Livro clássico" />
-            <div className="mt-3"></div>
-            {componenteFeedback}
-          </Cartao>
-        </div>
-        <div className="col-sm-12 col-lg-6 col-xxl-4">
-          <Cartao cabecalho="20/07/2025">
-            <Pedido
-              data="28/02/2025"
-              icone="fa-headphones"
-              titulo="Headphone"
-              descricao="Headphone Bluetooth" />
-            <div className="mt-3"></div>
-            {componenteFeedback}
-          </Cartao>
-        </div>
-        <div className="col-sm-12 col-lg-6 col-xxl-4">
-          <Cartao cabecalho="21/07/2025">
-            <Pedido
-              icone="fa-camera"
-              titulo="Câmera"
-              descricao="Câmera GoPro" />
-            <div className="mt-3"></div>
-            {componenteFeedback}
-          </Cartao>
-        </div>
+        {
+          pedidos.map((pedido) => (
+          <div className="col-sm-12 col-lg-6 col-xxl-4">
+            <Cartao cabecalho={pedido.data}>
+              <Pedido
+                icone={pedido.icone}
+                titulo={pedido.titulo}
+                descricao={pedido.descricao}/>
+              <div className="mt-3"></div>
+              {componenteFeedback}
+            </Cartao>
+            <div className="mb-3"></div>
+          </div>
+          ))
+        }
       </div>
     </div>
   </div>

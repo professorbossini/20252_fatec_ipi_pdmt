@@ -84,7 +84,7 @@ class App extends React.Component {
 
   componentDidMount(){
     console.log(`componentDidMount`)
-    //this.obterLocalizacao()
+    this.obterLocalizacao()
   }
 
   componentDidUpdate(){
@@ -109,7 +109,7 @@ class App extends React.Component {
           <div className='col-sm-12'>
             {
               (!this.state.latitude && !this.state.mensagemDeErro) ?
-                <Loading />
+                <Loading texto="oi"/>
               :
               this.state.mensagemDeErro ?
                 // p.border.rounded.p-2.fs-1.text-center
